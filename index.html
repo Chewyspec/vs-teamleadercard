@@ -7,22 +7,19 @@
 <title>Team Leader Card</title>
 
 <style>
-/* -------------------------------- BACKGROUND IMAGE (no video) ------------------------------- */
+/* -------------------------------- BACKGROUND IMAGE  ------------------------------- */
 body {
     margin: 0;
-    padding: 20px 0; /* ensures content is not hidden on mobile */
-    min-height: 100dvh; /* mobile-safe full height */
+    padding: 20px 0; /* So card never starts off-screen */
+    min-height: 100dvh; /* Mobile-safe height */
     font-family: Arial, sans-serif;
-
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* prevent centering issue */
+    align-items: flex-start; /* Prevent mobile hiding content */
     position: relative;
 
-    background: url('Public/Images/wksp.jpg') center center / cover no-repeat;
+    background: url('Public/Images/wksp.jpg') center center / cover no-repeat fixed;
     filter: blur(0px);
-
-    overflow-x: hidden; /* allow scrolling but prevent side-scroll */
 }
 
 /* -------------------------------- CARD WRAPPER ------------------------------- */
@@ -33,7 +30,7 @@ body {
     position: relative;
     z-index: 2;
 
-    margin-top: 60px; /* ensures card is visible immediately */
+    margin-top: 150px;
 }
 
 .card {
@@ -132,6 +129,7 @@ body {
     margin-bottom: 10px;
 }
 
+/* video area */
 .back-video-container {
     flex: 1;
     width: 100%;
@@ -168,7 +166,13 @@ body {
 
     .card-wrapper {
         width: 95%;
-        height: auto;
+        height: auto; /* prevent overflow */
+        margin-top: 60px; /* Mobile version of the down movement */
+    }
+
+    .card {
+        height: auto;           /* mobile-safe */
+        min-height: 480px;      /* keeps layout stable */
     }
 
     .photo-holder {
@@ -249,4 +253,3 @@ function flipCard() {
 
 </body>
 </html>
-
