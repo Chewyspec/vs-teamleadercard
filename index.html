@@ -10,17 +10,19 @@
 /* -------------------------------- BACKGROUND IMAGE (no video) ------------------------------- */
 body {
     margin: 0;
-    padding: 0;
-    height: 100vh;
+    padding: 20px 0; /* ensures content is not hidden on mobile */
+    min-height: 100dvh; /* mobile-safe full height */
     font-family: Arial, sans-serif;
+
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    align-items: flex-start; /* prevent centering issue */
     position: relative;
 
-    background: url('Public/Images/wksp.jpg') center center / cover no-repeat fixed;
+    background: url('Public/Images/wksp.jpg') center center / cover no-repeat;
     filter: blur(0px);
+
+    overflow-x: hidden; /* allow scrolling but prevent side-scroll */
 }
 
 /* -------------------------------- CARD WRAPPER ------------------------------- */
@@ -30,6 +32,8 @@ body {
     perspective: 2000px;
     position: relative;
     z-index: 2;
+
+    margin-top: 60px; /* ensures card is visible immediately */
 }
 
 .card {
@@ -128,7 +132,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* video area */
 .back-video-container {
     flex: 1;
     width: 100%;
@@ -162,6 +165,7 @@ body {
 
 /* -------------------------------- MOBILE FIXES ------------------------------- */
 @media (max-width: 480px) {
+
     .card-wrapper {
         width: 95%;
         height: auto;
